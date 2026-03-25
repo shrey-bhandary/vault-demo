@@ -1,0 +1,270 @@
+:root {
+  --sky: #f1f8ff;
+  --ink: #1b1a35;
+  --coral: #ff6b6b;
+  --mint: #2ec4b6;
+  --panel: #ffffff;
+  --line: #d8e3f0;
+  --ok: #138a52;
+  --bad: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%, #dff6ff, transparent 36%),
+    radial-gradient(circle at 85% 20%, #fff2cc, transparent 34%),
+    linear-gradient(120deg, #f6fbff 0%, #eef6ff 45%, #fff9f2 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.game-shell {
+  width: min(1100px, 92vw);
+  margin: 2rem auto 3rem;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.topbar {
+  background: var(--panel);
+  border: 2px solid var(--line);
+  border-radius: 20px;
+  padding: 1.3rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 14px 36px rgba(30, 41, 59, 0.1);
+}
+
+.kicker {
+  margin: 0;
+  color: #45526a;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.77rem;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Baloo 2", system-ui;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+}
+
+.subtitle {
+  margin: 0.3rem 0 0;
+  color: #45526a;
+}
+
+.scoreboard {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  min-width: 92px;
+  background: linear-gradient(145deg, #f7fbff, #ffffff);
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  padding: 0.35rem 0.65rem;
+  display: grid;
+  text-align: center;
+}
+
+.pill span {
+  font-size: 0.72rem;
+  color: #52617a;
+}
+
+.pill strong {
+  font-size: 1.15rem;
+}
+
+.board {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.4fr 1fr;
+}
+
+.expression-wrap,
+.panel,
+.legend {
+  background: var(--panel);
+  border: 2px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(30, 41, 59, 0.07);
+}
+
+.expression-wrap {
+  padding: 1.1rem;
+}
+
+.helper {
+  margin: 0.3rem 0 1rem;
+  color: #52617a;
+}
+
+.expression {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0.7rem;
+  background: var(--sky);
+  border-radius: 14px;
+  border: 2px dashed #bfd6ed;
+  min-height: 70px;
+}
+
+.token {
+  border-radius: 12px;
+  padding: 0.45rem 0.72rem;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+}
+
+.token.num {
+  background: #fff;
+  border: 2px solid #ceddf0;
+  cursor: default;
+}
+
+.token.op {
+  background: linear-gradient(150deg, #ffe2d8, #fff3e8);
+  border: 2px solid #ffcab3;
+  cursor: pointer;
+}
+
+.token.op:hover:enabled {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 107, 0.25);
+}
+
+.token.op.selected {
+  background: linear-gradient(150deg, #ddfff5, #f2fff9);
+  border-color: #88e1c3;
+}
+
+.token.op.done {
+  opacity: 0.5;
+}
+
+.controls {
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  padding: 1rem;
+}
+
+.picked-order {
+  margin: 0.6rem 0 0.8rem;
+  min-height: 35px;
+  color: #394963;
+  font-weight: 600;
+}
+
+.answer-row {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+input {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #c8d8eb;
+  padding: 0.55rem 0.65rem;
+  font: inherit;
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 0.58rem 0.9rem;
+  background: linear-gradient(140deg, var(--mint), #62e6d8);
+  color: #053f3f;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn.ghost {
+  background: #fff;
+  border: 2px solid #ceddf0;
+  color: #2b3a55;
+}
+
+.feedback {
+  min-height: 56px;
+  font-weight: 600;
+}
+
+.feedback.success {
+  border-color: #b7e8d0;
+  background: #edfff4;
+  color: var(--ok);
+}
+
+.feedback.error {
+  border-color: #ffd0ca;
+  background: #fff5f3;
+  color: var(--bad);
+}
+
+.legend {
+  padding: 1rem;
+}
+
+.legend-grid {
+  margin-top: 0.6rem;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.legend-grid article {
+  padding: 0.7rem;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #f7fbff, #fff);
+  border: 2px solid #d5e3f4;
+  text-align: center;
+}
+
+.legend-grid p {
+  margin: 0.15rem 0 0;
+  color: #4c5f7a;
+}
+
+@media (max-width: 900px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+
+  .legend-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
